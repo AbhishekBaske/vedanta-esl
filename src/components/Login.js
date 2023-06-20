@@ -1,13 +1,11 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import vedanta from "../assets/vedanta_esl.png"
 import "./style/login.css"
 import { auth } from "../firebase"
-import Popup from "reactjs-popup"
 import "firebase/auth"
 function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [errorPopupOpen, setErrorPopupOpen] = useState(false);
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
@@ -15,16 +13,9 @@ function Login() {
       const user = userCredential.user;
       console.log(user)
     } catch (error) {
-      setErrorPopupOpen(true)
+      console.log(error.message)
     }
   }
-  useEffect(() => {
-    if (errorPopupOpen) {
-        <Popup open={errorPopupOpen} onClose={() => setErrorPopupOpen(false)}>
-          <p>User does not exist. Kindly sign up and try again.</p>
-        </Popup>
-    }
-  })
   return(
     <>
     <div className="container">

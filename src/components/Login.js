@@ -1,24 +1,28 @@
 import { useState } from "react"
 import vedanta from "../assets/vedanta_esl.png"
 import "./style/login.css"
-import app from "../firebase"
-import {getAuth} from "firebase/auth"
+import { auth } from "../firebase"
 import {Link} from "react-router-dom"
-
+import { signInWithEmailAndPassword } from "firebase/auth";
+import {useNavigate} from "react-router-dom"
 
 function Login() {
+  const navigate = useNavigate()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
-      const userCredential = await getAuth(app).signInWithEmailAndPassword(email, password);
+      const userCredential = await signInWithEmailAndPassword(auth,email, password);
       const user = userCredential.user;
       console.log(user)
+      navigate("./share")
     } catch (error) {
       console.log(error.message)
+      alert("Register first and try again")
     }
   }
+
   return(
     <>
     <div className="container">

@@ -1,14 +1,12 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import vedanta from "../assets/vedanta_esl.png"
 import "./style/login.css"
-import { useNavigate } from "react-router-dom"
 import { auth } from "../firebase"
+import Popup from "reactjs-popup"
 function Login() {
-  const navigate = useNavigate()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-
-
+  const [errorPopupOpen, setErrorPopupOpen] = useState(false);
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
@@ -16,9 +14,16 @@ function Login() {
       const user = userCredential.user;
       console.log(user)
     } catch (error) {
-      // Handle errors
+      setErrorPopupOpen(true)
     }
   }
+  useEffect(() => {
+    if (errorPopupOpen) {
+      <Popup>
+        {<p>User not existes, Kindly SignUp and try Again</p>}
+      </Popup>
+    }
+  })
   return(
     <>
     <div className="container">

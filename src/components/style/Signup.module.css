@@ -1,0 +1,85 @@
+.layout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.logoVedanta {
+  width: 100%;
+  max-width: 38rem;
+  height: auto;
+}
+
+@media screen and (max-width: 559px) {
+  .logoVedanta {
+    max-width: 22rem;
+  }
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.input {
+  /* Input background color */
+  background-color: #f1f1f1;
+  
+  /* Input text color */
+  color: #333;
+  margin:5px;
+  font-size: 25px;
+  /* Input border */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  
+  /* Input padding */
+  padding: 8px 12px;
+  
+  /* Input focus style */
+  outline: none;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.input::placeholder {
+  /* Placeholder text color */
+  color: #999;
+}
+
+.input:focus {
+  /* Input focus style */
+  border-color: #4caf50;
+}
+
+.button {
+  /* Button background color */
+  background-color: #4caf50;
+  
+  /* Button text color */
+  color: white;
+  font-size: 16px;
+  font-family: RaleWay;
+  /* Button border */
+  border: none;
+  border-radius: 4px;
+  
+  /* Button padding */
+  padding: 10px 20px;
+  
+  /* Button hover effect */
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+.button:focus {
+  outline: none;
+  /* Additional styles when button is focused */
+}
+
+.button:active {
+  /* Additional styles when button is pressed */
+}

@@ -1,15 +1,18 @@
 import { useState } from "react"
 import vedanta from "../assets/vedanta_esl.png"
 import "./style/login.css"
-import { auth } from "../firebase"
-import "firebase/auth"
+import app from "../firebase"
+import {getAuth} from "firebase/auth"
+import {Link} from "react-router-dom"
+
+
 function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
-      const userCredential = await auth().signInWithEmailAndPassword(email, password);
+      const userCredential = await getAuth(app).signInWithEmailAndPassword(email, password);
       const user = userCredential.user;
       console.log(user)
     } catch (error) {
@@ -29,7 +32,7 @@ function Login() {
           <input className="container__forms--input"
           type="email"
           name="email"
-          placeholder="email"
+          placeholder="Email"
           value = {email}
           onChange={
             (e)=>{
@@ -40,7 +43,7 @@ function Login() {
           <input className="container__forms--input"
           type="password"
           name="password"
-          placeholder="password"
+          placeholder="Password"
           value={password}
           onChange={(e)=>{
             setPassword(e.target.value)
@@ -50,8 +53,10 @@ function Login() {
           type="submit"
           >Sign In</button></div>
           <div></div>
-        </form>
-      </div>
+          </form>
+          
+        </div>
+        <Link className="my-link" to="/register" >Register Here</Link>
     </div>
     </>
   )
